@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/v1/vehicles")
 public class VehicleController {
@@ -68,7 +70,14 @@ public class VehicleController {
                                 return vehicleService.updateVehicle(id,requestVehicleDTO);
                                     }
 
-
+@DeleteMapping("/{id}")
+    public Vehicle deleteVehicle(@PathVariable long id){
+        return vehicleService.deleteVehicle(id);
+}
+@GetMapping
+    public List<Vehicle> gelAllVehicles(){
+        return vehicleService.getAllVehicles();
+}
 
 
 

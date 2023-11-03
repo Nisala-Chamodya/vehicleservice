@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -67,6 +68,14 @@ public class VehicleServiceImpl implements VehicleService {
 
     @Override
     public Vehicle deleteVehicle(Long id) {
-        return null;
+       Vehicle vehicle=vehicleRepo.findById(id).get();
+       vehicleRepo.delete(vehicle);
+       return vehicle;
+    }
+
+    @Override
+    public List<Vehicle> getAllVehicles() {
+        System.out.println("Find All "+vehicleRepo.findAll());
+        return vehicleRepo.findAll();
     }
 }

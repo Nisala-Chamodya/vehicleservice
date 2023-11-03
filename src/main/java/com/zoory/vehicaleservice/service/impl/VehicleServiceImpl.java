@@ -34,4 +34,39 @@ public class VehicleServiceImpl implements VehicleService {
         );
         vehicleRepo.save(vehicle);
     }
+
+    @Override
+    public Vehicle updateVehicle(Long id, RequestVehicleDTO requestVehicleDTO) {
+        Vehicle vehicleVar=vehicleRepo.findById(id).get();
+        vehicleVar.setBrand(requestVehicleDTO.getBrand());
+        vehicleVar.setCategory(requestVehicleDTO.getCategory());
+        vehicleVar.setFuelType(requestVehicleDTO.getFuelType());
+        vehicleVar.setIsHybrid(requestVehicleDTO.getIsHybrid());
+        vehicleVar.setFuelConsumption(requestVehicleDTO.getFuelConsumption());
+
+        vehicleVar.setVehicleFontImg(requestVehicleDTO.getVehicleFontImg());
+        vehicleVar.setVehicleRearImg(requestVehicleDTO.getVehicleRearImg());
+
+        vehicleVar.setSeatCapacity(requestVehicleDTO.getSeatCapacity());
+        vehicleVar.setVehicleType(requestVehicleDTO.getVehicleType());
+        vehicleVar.setTransmissionMedium(requestVehicleDTO.getTransmissionMedium());
+        vehicleVar.setQty(requestVehicleDTO.getQty());
+        vehicleVar.setFeeFor1km(requestVehicleDTO.getFeeFor1km());
+        vehicleVar.setDriverName(requestVehicleDTO.getDriverName());
+        vehicleVar.setDriverContactNo(requestVehicleDTO.getDriverContactNo());
+
+        vehicleVar.setDriverLicenseFontImg(requestVehicleDTO.getDriverLicenseFontImg());
+        vehicleVar.setDriverLicenseRearImg(requestVehicleDTO.getDriverLicenseRearImg());
+
+        vehicleVar.setRemarks(requestVehicleDTO.getRemarks());
+
+        vehicleRepo.save(vehicleVar);
+        return vehicleVar;
+
+    }
+
+    @Override
+    public Vehicle deleteVehicle(Long id) {
+        return null;
+    }
 }

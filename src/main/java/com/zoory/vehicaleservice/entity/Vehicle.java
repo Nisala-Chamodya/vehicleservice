@@ -23,24 +23,24 @@ public class Vehicle {
     private String isHybrid;
     private String fuelConsumption;
 
+    @Column(nullable = false,columnDefinition = "LONGBLOB",length = 655555555)
+    private  byte[] vehicleFontImg;
+    @Column(nullable = false,columnDefinition = "LONGBLOB",length = 655555555)
+    private byte[] vehicleRearImg;
 
-    private  String vehicleFontImg;
 
-    private String vehicleRearImg;
-
-
-    private int seatCapacity;
+    private String seatCapacity;
     private String vehicleType;
     private String transmissionMedium;
-    private int qty;
+    private String qty;
     private String feeFor1km;
     private String driverName;
     private String driverContactNo;
 
-
-    private String driverLicenseFontImg;
-
-    private String driverLicenseRearImg;
+    @Column(nullable = false,columnDefinition = "LONGBLOB",length = 655555555)
+    private byte[] driverLicenseFontImg;
+    @Column(nullable = false,columnDefinition = "LONGBLOB",length = 655555555)
+    private byte[] driverLicenseRearImg;
 
     private String remarks;
 }

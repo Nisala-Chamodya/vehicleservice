@@ -17,15 +17,21 @@ public class VehicleServiceImpl implements VehicleService {
     private VehicleRepo vehicleRepo;
 
 
-    ModelMapper mapper;
     @Override
     public void saveVehicle(RequestVehicleDTO requestVehicleDTO) {
         UUID uuid = UUID.randomUUID();
         long id = uuid.getMostSignificantBits();
 
-        Vehicle mapped = mapper.map(requestVehicleDTO, Vehicle.class);
-        mapped.setId(id);
-        vehicleRepo.save(mapped);
 
+        Vehicle vehicle =new Vehicle(
+                id,requestVehicleDTO.getBrand(),requestVehicleDTO.getCategory(),
+                requestVehicleDTO.getFuelType(),requestVehicleDTO.getIsHybrid(),requestVehicleDTO.getFuelConsumption(),
+                requestVehicleDTO.getVehicleFontImg(),requestVehicleDTO.getVehicleRearImg(),requestVehicleDTO.getSeatCapacity(),
+                requestVehicleDTO.getVehicleType(),requestVehicleDTO.getTransmissionMedium(),
+                requestVehicleDTO.getQty(),requestVehicleDTO.getFeeFor1km(),requestVehicleDTO.getDriverName(),
+                requestVehicleDTO.getDriverContactNo(),requestVehicleDTO.getDriverLicenseFontImg(),requestVehicleDTO.getDriverLicenseRearImg(),
+                requestVehicleDTO.getRemarks()
+        );
+        vehicleRepo.save(vehicle);
     }
 }

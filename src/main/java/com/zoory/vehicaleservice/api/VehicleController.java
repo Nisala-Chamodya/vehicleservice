@@ -13,14 +13,38 @@ public class VehicleController {
     private VehicleService vehicleService;
 
     @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
-    public String addVehicle(@ModelAttribute RequestVehicleDTO requestVehicleDTO
-    ){
+    public void addVehicle(@RequestPart String brand,
+                           @RequestPart String category,
+                           @RequestPart String fuelType,
+                           @RequestPart String isHybrid,
+                           @RequestPart String fuelConsumption,
+                           @RequestPart byte[] vehicleFontImg,
+                           @RequestPart byte[] vehicleRearImg,
+                           @RequestPart String seatCapacity,
+                           @RequestPart String vehicleType,
+                           @RequestPart String transmissionMedium,
+                           @RequestPart String qty,
+                           @RequestPart String feeFor1km,
+                           @RequestPart String driverName,
+                           @RequestPart String driverContactNo,
+                           @RequestPart byte[] driverLicenseFontImg,
+                           @RequestPart byte[] driverLicenseRearImg,
+                           @RequestPart String remarks){
+
+
+         RequestVehicleDTO requestVehicleDTO=new RequestVehicleDTO(brand,category,fuelType,isHybrid,fuelConsumption,
+                 vehicleFontImg,vehicleRearImg,seatCapacity,vehicleType,transmissionMedium,qty,feeFor1km,driverName,
+                 driverContactNo,driverLicenseFontImg,driverLicenseRearImg,remarks);
+
         vehicleService.saveVehicle(requestVehicleDTO);
-        System.out.println(requestVehicleDTO);
-        return requestVehicleDTO.getBrand();
+
+
+
+
+
+
+
     }
-@PutMapping
-    public void updateVehicle(){
-    System.out.println("Put mapping");
-}
-}
+
+
+   }
